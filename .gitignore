@@ -5,6 +5,8 @@ build/
 dist/
 wheels/
 *.egg-info
+minio_data
+qdrant_storage
 
 # Virtual environments
 .venv
