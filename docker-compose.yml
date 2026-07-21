@@ -28,7 +28,6 @@ services:
     command: server --console-address ":9001" /data
     restart: unless-stopped
 
-  # Служебный контейнер для автоматической настройки MinIO
   minio-init:
     image: minio/mc:latest
     container_name: minio-init
@@ -63,7 +62,7 @@ services:
       HF_HOME: /cache/huggingface
     volumes:
       - hf_models_cache:/cache/huggingface
-    command: python3 mcp_server.py
+    command: fastmcp run main.py --port 8000 --host 0.0.0.0 --transport sse
     deploy:
       resources:
         reservations:
